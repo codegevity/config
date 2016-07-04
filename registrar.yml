@@ -1,0 +1,32 @@
+server:
+    port: 8888
+
+management:
+    context-path: /admin
+  
+logging:
+    level:
+        com.codegevity.registrar: 'DEBUG'
+        com.netflix.discovery: 'OFF'
+        org.springframework.cloud: 'DEBUG'
+
+eureka:
+    client:
+        fetchRegistry: false
+        leaseRenewalIntervalInSeconds: 10
+        leaseExpirationDurationInSeconds: 20
+        registerWithEureka: false
+    instance:
+        leaseRenewalIntervalInSeconds: 10
+        statusPageUrlPath: /admin/info
+        healthCheckUrlPath: /admin/health
+    server:
+        enableSelfPreservation: false
+        waitTimeInMsWhenSyncEmpty: 0
+        
+spring:
+    cloud:
+        config:
+            server:
+                git:
+                    uri: https://github.com/spring-cloud-samples/config-repo
